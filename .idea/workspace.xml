@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6e589dc8-bbfb-4ab3-8a56-f4cd36c5004d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/backend/server.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/it-spa.4bb7a28f.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/it-spa.4bb7a28f.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/it-spa.4bb7a28f.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/it-spa.4bb7a28f.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/it-spa.a4b416d4.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/it-spa.a4b416d4.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/it-spa.a4b416d4.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/it-spa.a4b416d4.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/main.847ea5f6.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/main.847ea5f6.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/main.847ea5f6.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/main.847ea5f6.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/slide01.f5516fd3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/slide02.a72de3b5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/slide03.7fe2da5e.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/fonts/fontawesome-webfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/fonts/fontawesome-webfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/fonts/fontawesome-webfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/fonts/fontawesome-webfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/fonts/fontawesome-webfont.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/assets/img_hand-massage.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/assets/img_massage-therapy.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/assets/img_relaxation.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/assets/img_violet-flowers.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/assets/slide01.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/assets/slide02.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/assets/slide03.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/common/rooms-service.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/it-spa.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/styles/home.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/views/home.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/views/rooms.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/database.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/FontAwesome.otf" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/fonts/FontAwesome.otf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/fontawesome-webfont.eot" beforeDir="false" afterPath="$PROJECT_DIR$/dist/fontawesome-webfont.a16b4b15.eot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/fontawesome-webfont.svg" beforeDir="false" afterPath="$PROJECT_DIR$/dist/fontawesome-webfont.79dd36ce.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/fontawesome-webfont.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/dist/fontawesome-webfont.c6670704.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/fontawesome-webfont.woff" beforeDir="false" afterPath="$PROJECT_DIR$/dist/fontawesome-webfont.83d56cc7.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/fontawesome-webfont.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/dist/fontawesome-webfont.328ae129.woff2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cart/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/cart/cart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cart/it-spa-cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/cart/it-spa-cart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/rooms-service.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it-spa.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/it-spa.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it-spa.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/nav-item.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/navigation/nav-item.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/navigation/nav.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/route-change.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/router/route-change.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/router/router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/router/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/booking.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/booking.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/home.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/oops.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/oops.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/rooms.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/treatments.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/treatments.js" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1YnhdwSZpWWraMKG0mIRgXWZHE6" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="start:app" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start:app" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start:app" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6e589dc8-bbfb-4ab3-8a56-f4cd36c5004d" name="Default Changelist" comment="" />
+      <created>1583870247742</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1583870247742</updated>
+      <workItem from="1583870249219" duration="256000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
