@@ -1,11 +1,11 @@
 import $ from 'jquery';
 
-export const booking = () => {
+export const treatments = () => {
   const fragment = $(new DocumentFragment());
 
   fragment
-    .append('<h2>Booking</h2>')
+    .append('<h2>Treatments</h2>')
     .append('<p>Lorem ipsum dolor sit amet...</p>');
 
-  return fragment;
+  return Promise.resolve(fragment);
 };

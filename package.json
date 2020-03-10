@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:db": "json-server --watch database.json",
-    "start:app": "parcel ./index.html --open"
+    "start:db": "json-server --watch frontend/database.json",
+    "start:app": "parcel ./frontend/index.html --open",
+    "start:server": "nodemon ./backend/server.js"
   },
   "keywords": [],
   "author": "",
@@ -17,7 +18,10 @@
   },
   "dependencies": {
     "bootstrap": "^4.4.1",
+    "express": "latest",
     "font-awesome": "^4.7.0",
-    "jquery": "^3.4.1"
+    "frontend": "^2.0.0-alpha.4",
+    "jquery": "^3.4.1",
+    "nodemon": "^2.0.2"
   }
 }

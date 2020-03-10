@@ -7,7 +7,7 @@ export const navItem = (text, click) => {
   const anchor = $('<a class="btn btn-link text-light"></a>');
   anchor.text(text).on('click', click);
 
-document.crea
+// document.crea
 
   navItem.append(anchor);
 

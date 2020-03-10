@@ -36,14 +36,11 @@ export class Router {
   }
 
   navigate(path, data = {}) {
-    // sciezka istnieje, mozna nawigowac
     if (this.has(path)) {
-      // { path: '/booking', data: {}, component: booking }
       const { component } = this.get(path);
       
       component()// dostaje Promise zaw. html widoku
         .then(html => {
-          // renderuje ten html wew. outletu
           this.outlet.empty().append(html);
         })
       

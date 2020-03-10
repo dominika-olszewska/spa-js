@@ -1,11 +1,11 @@
 import $ from 'jquery';
 
-export const home = () => {
+export const oops = () => {
   const fragment = $(new DocumentFragment());
 
   fragment
-    .append('<h2>Home</h2>')
-    .append('<p>Lorem ipsum dolor sit amet...</p>');
+    .append('<h2>Oops</h2>')
+    .append('<p>Użytkowniku! Co żeś uczynił?!</p>');
 
   return Promise.resolve(fragment);
 };

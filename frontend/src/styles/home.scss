@@ -1,0 +1,45 @@
+.slide {
+  //height: 80vh;
+  //background-size: cover;
+  //background-position: center;
+  display: none;
+  width: 100%;
+}
+
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+.img01 {
+  background-image: url("../assets/slide01.jpg");
+}
+
+.img02 {
+  background-image: url("../assets/slide02.jpg");
+}
+
+.img03 {
+  background-image: url("../assets/slide03.jpg");
+}
+
+
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
