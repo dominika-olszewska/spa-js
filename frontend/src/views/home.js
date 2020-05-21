@@ -3,38 +3,26 @@ import '../styles/home.scss';
 import slide01 from '../assets/slide01.jpg';
 
 const createLayout = () => {
-    const html = `<h2>Home</h2>
-<p>Lorem lorem loffe </p>
+    const html = `
 <div class="slideshow-container">
 
-    <div class="mySlides fade">
-        <div class="numbertext">1 / 3</div>
-        <img src="./../slide01.jpg" style="width:100%">
-        <div class="text">Caption Text</div>
+    <div class="mySlides ">
+        <div class="img-slide slide01"></div>  
     </div>
 
-    <div class="mySlides fade">
-        <div class="numbertext">2 / 3</div>
-        <img src="../assets/slide02.jpg" style="width:100%">
-        <div class="text">Caption Two</div>
+    <div class="mySlides ">
+        <div class="img-slide slide02"></div>  
     </div>
 
-    <div class="mySlides fade">
-        <div class="numbertext">3 / 3</div>
-<!--        <img src="../assets/slide03.jpg" style="width:100%">-->
-        <div class="img-slide"></div>
-        <div class="text">Caption Three</div>
+    <div class="mySlides ">
+        <div class="img-slide slide03"></div>
     </div>
-
 </div>
-<br>
-
-<div style="text-align:center">
+<div class="dots">
     <span class="dot"></span>
     <span class="dot"></span>
     <span class="dot"></span>
 </div>
-<div class="img-slide"></div>
     `;
     return html;
 };
