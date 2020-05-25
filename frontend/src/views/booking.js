@@ -1,15 +1,28 @@
 import $ from 'jquery';
+import '../styles/booking.scss';
 import {sessionStorageService} from '../common/session-storage-service';
+import {createDivEl, createButtonEl} from "./rooms";
 
 export const booking = () => {
     const fragment = $(new DocumentFragment());
-    const storage = sessionStorageService.getItem('rooms');
-    console.log('storage', storage);
-    console.log('storage typof', typeof storage);
+    const storageRooms = sessionStorageService.getItem('rooms');
+
+    const bookedRoomsList = document.createElement('div');
+    bookedRoomsList.className = "bookedRoomsList";
+
+    storageRooms.map(storageRoom => {
+        const storageElement = document.createElement('div');
+        storageElement.className = 'storageElement';
+        storageRoom.id = storageElement.id;
+        createDivEl("name", storageRoom.name, storageElement);
+        return bookedRoomsList.appendChild(storageElement);
+    });
+
+    const bookingsPage = document.createElement('div');
+    bookingsPage.className = "bookingsPage";
+    bookingsPage.appendChild(bookedRoomsList);
     fragment
-        .append('<h2>Booking</h2>')
-        .append('<p>Lorem ipsum dolor sit amet...</p>')
-        .append('storage', storage);
+        .append(bookingsPage);
 
     return Promise.resolve(fragment);
 };

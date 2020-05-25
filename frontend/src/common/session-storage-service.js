@@ -7,6 +7,10 @@ export const sessionStorageService = {
     getItem(key) {
         const value = sessionStorage.getItem(key);
         return JSON.parse(value);
+    },
+
+    deleteItem(key) {
+      sessionStorage.removeItem(key);
     }
 
 

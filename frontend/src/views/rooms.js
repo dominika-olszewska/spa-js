@@ -3,38 +3,67 @@ import {roomsService} from '../common/rooms-service';
 import {sessionStorageService} from '../common/session-storage-service';
 import '../styles/rooms.scss';
 
-const createDivEl = (className, roomElement, container, name = '') => {
+export const createDivEl = (className, roomElement, container, name = '') => {
     const el = document.createElement('div');
     el.className = className;
     name ? el.innerHTML = name + ': ' + roomElement : el.innerHTML = roomElement;
     container.append(el);
 };
 
-const createButtonEl = (name, room, roomEl) => {
+export const createButtonEl = (name, room, roomEl, addToStorage) => {
     const button = document.createElement('button');
-    button.innerHTML = 'Plus';
-    button.addEventListener('click', () => {
-        console.log('room from Room Page', room);
-        addToSessionStorage(room);
-    });
+    button.innerHTML = name;
+    addToStorage
+        ? button.addEventListener('click', () => {
+            addToSessionStorage(room);
+        })
+        : button.addEventListener('click', () => {
+            console.log('room to delete', room.name, room.id);
+            deleteFromSessionStorage(room);
+        });
     roomEl?.appendChild(button);
-
 };
 
-const addToSessionStorage = (room) => {
-    let rooms = sessionStorage.getItem('rooms');
+export const getRoomsFromStorage = () => {
+    let rooms = sessionStorage.getItem('rooms') || [];
+    if (rooms && (typeof rooms) !== "object") {
+        rooms = JSON.parse(rooms)
+    }
+    return rooms;
+};
 
-    if (typeof Storage === "undefined") {
-        rooms = [];
-    }
-    if(rooms && (typeof rooms) !== "object") {
-        rooms=JSON.parse(rooms)
-    }
-    // const valuesInStorage = rooms?.filter( ROOM => room.id === ROOM.id);
-    // !valuesInStorage || valuesInStorage?.length === 0 ? rooms.push(room) : null;
-    rooms.push(room);
+export const addToSessionStorage = (room) => {
+    let rooms = getRoomsFromStorage();
+    const valuesInStorage = rooms?.filter(ROOM => room.id === ROOM.id);
+    valuesInStorage?.length === 0 ? rooms.push(room) : null;
     sessionStorageService.setItem('rooms', rooms);
-}
+};
+
+export const deleteFromSessionStorage = (room) => {
+    let rooms = getRoomsFromStorage();
+    const newRooms = rooms.filter(ROOM => {
+        return ROOM.id !== room.id
+    });
+    sessionStorageService.setItem('rooms', newRooms);
+};
+
+export const createInputEl = (className) => {
+    const input =  document.createElement('input');
+    input.type = 'date';
+    input.className = className;
+    return input;
+};
+
+export const createDatePicker = () => {
+    const form = document.createElement('form');
+
+    const startDateInput =  createInputEl('startDateInput');
+    const endDateInput =  createInputEl('endDateInput');
+
+    form.append(startDateInput);
+    form.append(endDateInput);
+    return form;
+};
 
 export const rooms = () => {
     const fragment = $(new DocumentFragment());
@@ -49,7 +78,8 @@ export const rooms = () => {
             roomEl.id = room.id;
             createDivEl("name", room.name, roomEl);
 
-            createButtonEl('Plus', room, roomEl);
+            createButtonEl('Plus', room, roomEl, true);
+            createButtonEl('Minus', room, roomEl, false);
 
             createDivEl("beds", room.beds, roomEl, 'Beds');
             createDivEl("guests", room.guests, roomEl, 'Guests');
@@ -58,12 +88,17 @@ export const rooms = () => {
             return roomsList.appendChild(roomEl);
 
         });
+
         const roomsPage = document.createElement('div');
         roomsPage.className = "roomsPage";
+        const datePicker = createDatePicker();
+        roomsPage.append(datePicker);
         roomsPage.append(roomsList);
-        console.log('newList', roomsList);
+
         fragment
             .append(roomsPage);
+
+
 
         return Promise.resolve(fragment);
     });
