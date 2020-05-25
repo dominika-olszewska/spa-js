@@ -1,52 +1,40 @@
 import $ from 'jquery';
-import mockData from '../../database';
 import {roomsService} from '../common/rooms-service';
+import '../styles/rooms.scss';
 
 export const rooms = () => {
-  const fragment = $(new DocumentFragment());
+    const fragment = $(new DocumentFragment());
+    return roomsService.getRooms().then(rooms => {
+        console.log(rooms);
+        const roomsList = document.createElement('div');
+        roomsList.className = "roomsList";
 
-  return roomsService.getRooms().then(rooms => {
-    fragment
-    .append('<h2>Rooms</h2>')
-    .append(`<p>Pierwszy pokoj: ${rooms[0].name}</p>`)
+        rooms.map(room => {
+            const container = document.createElement('div');
+            container.className = 'room';
+            const roomName = document.createElement('div');
+            roomName.className = "name";
+            roomName.innerHTML = room.name;
+            container.append(roomName);
 
-    return Promise.resolve(fragment);
-  });
+            const roomBeds = document.createElement('div');
+            roomBeds.className = "beds";
+            roomBeds.innerHTML = 'Beds ' + room.beds;
+            container.append(roomBeds);
+
+            container.append('<div class="guests">' + room.guests + '</div>');
+            container.append('<div class="price">' + room.price + '</div>');
+
+            return roomsList.appendChild(container);
+
+        });
+        const roomsPage = document.createElement('div');
+        roomsPage.className = "roomsPage";
+        roomsPage.append(roomsList);
+        console.log('newList', roomsList);
+        fragment
+            .append(roomsPage)
+        return Promise.resolve(fragment);
+    });
 };
-
-
-// export const rooms = () => {
-//     const fragment = $(new DocumentFragment());
-//     const roomList = mockData.rooms.map(room => room.name);
-//
-//     fragment
-//         .append('<h2>Rooms</h2>')
-//         .append('<p>Lorem ipsum </p>')
-//         .append('<ul class="roomList"></ul>')
-//
-//     fragment.find('ul').append(roomList)
-//     return Promise.resolve(fragment);
-// };
-
-
-// export const rooms = () => {
-//     const fragment = $(new DocumentFragment());
-//     const roomsToDisplay = roomsService.getRooms().then(rooms => {
-//         console.log(rooms);
-//       fragment
-//           .append('<h2>Rooms</h2>')
-//           .append('<p>Lorem ipsum </p>')
-//           .append('<p>${rooms}</p>');
-//     });
-//
-//
-//
-//     // fragment
-//     //     .append('<h2>Rooms</h2>')
-//     //     .append('<p>Lorem ipsum </p>')
-//     //     .append('<p>${roomsToDisplay}</p>');
-//
-//     // return Promise.resolve(fragment);
-//     return roomsToDisplay;
-// };
 

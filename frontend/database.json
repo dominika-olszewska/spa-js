@@ -3,28 +3,28 @@
   "rooms": [
     {
       "id": 1,
-      "name": "Pokój unarny",
+      "name": "Unary room",
       "beds": 1,
       "guests": 1,
       "price": 170
     },
     {
       "id": 2,
-      "name": "Pokój binarny",
+      "name": "Binary room",
       "beds": 1,
       "guests": 2,
       "price": 240
     },
     {
       "id": 3,
-      "name": "Pokój trójkowy",
+      "name": "Triple room",
       "beds": 2,
       "guests": 3,
       "price": 290
     },
     {
       "id": 4,
-      "name": "Pokój czwórkowy",
+      "name": "Four-bed room",
       "beds": 2,
       "guests": 4,
       "price": 340
@@ -82,4 +82,3 @@
     }
   ]
 }
- 
