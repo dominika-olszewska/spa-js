@@ -1,0 +1,44 @@
+.navbar-spa {
+  background-color: #403a35 !important;
+  opacity: 0.5;
+  height: 6vh;
+  color: white;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 100px 1fr;
+
+}
+
+.menu {
+  margin: 0;
+  list-style-type: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.navbar-logo {
+  padding: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-item {
+  padding-left: 12px;
+  height: 100%;
+}
+
+.nav-link {
+  padding: 8px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    cursor: pointer;
+    background-color: darken(#403a35, 20%)
+  }
+}

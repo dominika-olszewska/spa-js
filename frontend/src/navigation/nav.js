@@ -2,12 +2,13 @@ import $ from 'jquery';
 import { routeChange } from '../router/route-change';
 import { routes } from '../router/routes';
 import { navItem } from './nav-item';
+import '../styles/nav.scss';
 
 export const nav = () => {
   const navbar = $(`
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
-      <span class="navbar-brand">IT SPA</span>
-      <ul class="navbar-nav mr-auto"></ul>
+    <nav class="navbar-spa ">
+      <span class="navbar-logo">IT SPA</span>
+      <ul class="menu"></ul>
     </nav>
   `);
 
