@@ -44,28 +44,3 @@ Możesz dowolnie zmienić istniejące zabiegi lub dodać swoje własne.
 Stwórz komponent koszyka, który po najechaniu myszką będzie wyświetlał dodane pokoje i zabiegi.
 Koszyk musi przetrwać przeładowanie strony, dlatego spróbuj wykorzystać ciasteczka (Cookies).
 
-## Technologie
-
-- HTML, Bootstrap
-- CSS, Sass, LESS
-- JavaScript, jQuery
-- Node, Express
-
-Postaraj się korzystać z ECMAScript 6.
-
-Do interakcji z serwerem bazy danych wykorzystaj `fetch`.
-Jeśli lubisz eksperymenty, zainstaluj pakiet `axios`.
-
-## Ocena
-
-Zamieść gotowy projekt na swoim GitHubie.
-Postaraj się oddać projekt do końca maja 2020.
-
-## Przykłady
-
-Strony, którymi możesz się inspirować: 
-
-- afrodyta-spa.pl
-- bukowypark.pl
-- hotelczarnypotok.pl
-- hotelniemcza.pl
