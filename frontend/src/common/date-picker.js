@@ -11,31 +11,41 @@ export const createInputEl = (className) => {
 };
 
 export const createStartInputEl = (className) => {
-    return createInputEl(className);
-};
-
-export const createEndInputEl = (className, isDisabled) => {
-    const input =  createInputEl(className);
-    input.disabled = isDisabled;
+    const storageStartDay = sessionStorageService.getItem('startDate');
+    const input = createInputEl(className);
+    storageStartDay ? input.value = storageStartDay : input.value;
     return input;
 };
 
-export const createDatePicker = () => {
-    const form = document.createElement('form');
-    let isEndInputDisabled = true;
+export const clearEndInput = (startDate, endDate, input) => {
+    const stayDuration = moment(endDate).diff(moment(startDate), 'days');
+    if (stayDuration < 1) {
+        input.value = '';
+        sessionStorageService.setItem('endDate', input.value);
+    }
+};
 
-    const startDateInput = createStartInputEl('startDateInput');
-    const endDateInput = createEndInputEl('endDateInput', isEndInputDisabled);
+export const createEndInputEl = (className, isDisabled) => {
+    const storageStartDay = sessionStorageService.getItem('startDate');
+    const storageEndDay = sessionStorageService.getItem('endDate');
+    const input = createInputEl(className);
+    input.disabled = isDisabled;
+    if (storageEndDay || storageEndDay === "") {
+        input.value = storageEndDay;
+        input.disabled = false;
+        const min = moment(storageStartDay, 'YYYY-MM-DD').add(1, 'days').format('YYYY-MM-DD');
+        clearEndInput(storageStartDay, storageEndDay, input);
+        input.min = min;
+    }
+    return input;
+};
 
+export const onStartInputChange = (isEndInputDisabled, startDateInput, endDateInput) => {
     startDateInput.addEventListener('change', (event) => {
         const startDate = event.target.value;
         const endDate = endDateInput.value;
-        if(endDate) {
-            const stayDuration = moment(endDate).diff(moment(startDate), 'days');
-            if(stayDuration < 1) {
-                endDateInput.value = '';
-                sessionStorageService.setItem('endDate', endDateInput.value);
-            }
+        if (endDate) {
+             clearEndInput(startDate, endDate, endDateInput);
         }
 
         isEndInputDisabled = false;
@@ -45,10 +55,23 @@ export const createDatePicker = () => {
 
         sessionStorageService.setItem('startDate', startDate);
     });
+};
 
+export const onEndInputChange = (endDateInput) => {
     endDateInput.addEventListener('change', (event) => {
         sessionStorageService.setItem('endDate', event.target.value);
     });
+};
+
+export const createDatePicker = () => {
+    const form = document.createElement('form');
+
+    let isEndInputDisabled = true;
+    const startDateInput = createStartInputEl('startDateInput');
+    const endDateInput = createEndInputEl('endDateInput', isEndInputDisabled);
+
+    onStartInputChange(isEndInputDisabled, startDateInput, endDateInput);
+    onEndInputChange(endDateInput);
 
     form.append(startDateInput);
     form.append(endDateInput);
