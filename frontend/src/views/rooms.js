@@ -3,6 +3,7 @@ import {roomsService} from '../common/rooms-service';
 import {sessionStorageService} from '../common/session-storage-service';
 import '../styles/rooms.scss';
 import moment from "moment";
+import {createDatePicker} from "../common/date-picker";
 
 export const createDivEl = (className, roomElement, container, name = '') => {
     const el = document.createElement('div');
@@ -55,44 +56,6 @@ export const createInputEl = (className) => {
     const today = moment().format('YYYY-MM-DD');
     input.min = today;
     return input;
-};
-
-export const createStartInputEl = (className) => {
-    return createInputEl(className);
-};
-
-export const createEndInputEl = (className, isDisabled) => {
-    const input =  createInputEl(className);
-    input.disabled = isDisabled;
-    return input;
-};
-
-export const createDatePicker = () => {
-    const form = document.createElement('form');
-    let isEndInputDisabled = true;
-
-    const startDateInput = createStartInputEl('startDateInput');
-    const endDateInput = createEndInputEl('endDateInput', isEndInputDisabled);
-
-    startDateInput.addEventListener('change', (event) => {
-        const startDate = event.target.value;
-        const endDate = endDateInput.value;
-        if(endDate) {
-            const stayDuration = moment(endDate).diff(moment(startDate), 'days');
-            if(stayDuration < 1) {
-                endDateInput.value = '';
-            }
-        }
-
-        isEndInputDisabled = false;
-        endDateInput.disabled = isEndInputDisabled;
-        const min = moment(startDate, 'YYYY-MM-DD').add(1, 'days').format('YYYY-MM-DD');
-        endDateInput.min = min;
-    });
-
-    form.append(startDateInput);
-    form.append(endDateInput);
-    return form;
 };
 
 export const rooms = () => {
