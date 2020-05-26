@@ -10,13 +10,15 @@ export const booking = () => {
     const bookedRoomsList = document.createElement('div');
     bookedRoomsList.className = "bookedRoomsList";
 
-    storageRooms.map(storageRoom => {
-        const storageElement = document.createElement('div');
-        storageElement.className = 'storageElement';
-        storageRoom.id = storageElement.id;
-        createDivEl("name", storageRoom.name, storageElement);
-        return bookedRoomsList.appendChild(storageElement);
-    });
+    storageRooms
+        ? storageRooms.map(storageRoom => {
+            const storageElement = document.createElement('div');
+            storageElement.className = 'storageElement';
+            storageRoom.id = storageElement.id;
+            createDivEl("name", storageRoom.name, storageElement);
+            return bookedRoomsList.appendChild(storageElement);
+        })
+        : null;
 
     const bookingsPage = document.createElement('div');
     bookingsPage.className = "bookingsPage";
