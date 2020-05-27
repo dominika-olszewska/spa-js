@@ -5,25 +5,25 @@ import '../styles/rooms.scss';
 import moment from "moment";
 import {createDatePicker} from "../common/date-picker";
 
-export const createDivEl = (className, roomElement, container, name = '') => {
+export const createDivEl = (className, element, container, name = '') => {
     const el = document.createElement('div');
     el.className = className;
-    name ? el.innerHTML = name + ': ' + roomElement : el.innerHTML = roomElement;
+    name ? el.innerHTML = name + ': ' + element : el.innerHTML = element;
     container.append(el);
 };
 
-export const createButtonEl = (name, room, roomEl, addToStorage) => {
+export const createButtonEl = (name, element, container, addToStorage) => {
     const button = document.createElement('button');
     button.innerHTML = name;
     addToStorage
         ? button.addEventListener('click', () => {
-            addToSessionStorage(room);
+            addToSessionStorage(element);
         })
         : button.addEventListener('click', () => {
-            console.log('room to delete', room.name, room.id);
-            deleteFromSessionStorage(room);
+            console.log('room to delete', element.name, element.id);
+            deleteFromSessionStorage(element);
         });
-    roomEl?.appendChild(button);
+    container?.appendChild(button);
 };
 
 export const getRoomsFromStorage = () => {
@@ -61,24 +61,26 @@ export const createInputEl = (className) => {
 export const rooms = () => {
     const fragment = $(new DocumentFragment());
     return roomsService.getRooms().then(rooms => {
+
         console.log(rooms);
+
         const roomsList = document.createElement('div');
         roomsList.className = "roomsList";
 
         rooms.map(room => {
-            const roomEl = document.createElement('div');
-            roomEl.className = 'room';
-            roomEl.id = room.id;
-            createDivEl("name", room.name, roomEl);
+            const roomContainer = document.createElement('div');
+            roomContainer.className = 'room';
+            roomContainer.id = room.id;
+            createDivEl("name", room.name, roomContainer);
 
-            createButtonEl('Plus', room, roomEl, true);
-            createButtonEl('Minus', room, roomEl, false);
+            createButtonEl('Plus', room, roomContainer, true);
+            createButtonEl('Minus', room, roomContainer, false);
 
-            createDivEl("beds", room.beds, roomEl, 'Beds');
-            createDivEl("guests", room.guests, roomEl, 'Guests');
-            createDivEl("price", room.price, roomEl, 'Price');
+            createDivEl("beds", room.beds, roomContainer, 'Beds');
+            createDivEl("guests", room.guests, roomContainer, 'Guests');
+            createDivEl("price", room.price, roomContainer, 'Price');
 
-            return roomsList.appendChild(roomEl);
+            return roomsList.appendChild(roomContainer);
 
         });
 

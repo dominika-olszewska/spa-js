@@ -1,8 +1,6 @@
 import $ from 'jquery';
 import '../styles/home.scss';
 
-let slideIndex = 0;
-
 const createLayout = () => {
     const html = `
 <div class="slideshow-container">
@@ -37,6 +35,8 @@ const createLayout = () => {
     `;
     return html;
 };
+
+let slideIndex = 0;
 
 const showSlides = () => {
     const slides = document.getElementsByClassName("mySlides");

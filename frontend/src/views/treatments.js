@@ -1,11 +1,21 @@
 import $ from 'jquery';
+import {treatmentsService} from "../common/treatments-service";
+import '../styles/treatments.scss';
 
 export const treatments = () => {
   const fragment = $(new DocumentFragment());
 
-  fragment
-    .append('<h2>Treatments</h2>')
-    .append('<p>Lorem ipsum dolor sit amet...</p>');
+  return treatmentsService.getTreatments().then(treatments => {
 
-  return Promise.resolve(fragment);
+    const treatmentsPage = document.createElement('div');
+    treatmentsPage.className = "treatmentsPage";
+
+    fragment
+        .append(treatmentsPage);
+
+    return Promise.resolve(fragment);
+
+  });
+
+
 };
