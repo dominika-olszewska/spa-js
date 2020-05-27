@@ -12,9 +12,11 @@ export const createDivEl = (className, element, container, name = '') => {
     container.append(el);
 };
 
-export const createButtonEl = (name, element, container, addToStorage) => {
+export const createButtonEl = (name, element, container, addToStorage, id, className) => {
     const button = document.createElement('button');
     button.innerHTML = name;
+    button.id = id;
+    button.className = className;
     addToStorage
         ? button.addEventListener('click', () => {
             addToSessionStorage(element);
@@ -74,8 +76,8 @@ export const rooms = () => {
                 roomContainer.id = room.id;
                 createDivEl("name", room.name, roomContainer);
 
-                createButtonEl('Plus', room, roomContainer, true);
-                createButtonEl('Minus', room, roomContainer, false);
+                createButtonEl('+', room, roomContainer, true, 'button-plus', 'active');
+                createButtonEl('-', room, roomContainer, false, 'button-minus', '');
 
                 createDivEl("beds", room.beds, roomContainer, 'Beds');
                 createDivEl("guests", room.guests, roomContainer, 'Guests');

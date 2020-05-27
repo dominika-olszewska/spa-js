@@ -12,7 +12,6 @@ export const nav = () => {
     </nav>
   `);
 
-  // chcemy zbudowac tablice elementow navItem z odpowiednimi nazwami i callbackami
   const navItems = routes.map(route => {
     const { name, path } = route;
     return navItem(name, () => navbar.trigger(routeChange, { path: path }));

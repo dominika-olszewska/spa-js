@@ -8,6 +8,11 @@ export const treatments = () => {
     return new Promise((resolve, reject) => {
         treatmentsService.getTreatments().then(data => {
             const treatments = data.treatments;
+
+            treatments.map(treatment => {
+
+            });
+
             const treatmentsPage = document.createElement('div');
             treatmentsPage.className = "treatmentsPage";
 

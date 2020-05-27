@@ -14,13 +14,9 @@ export class Router {
   mount(outlet) {
     this.outlet = outlet;
 
-    // detail to, np. { path: '/booking' }
     this.body.on(routeChange, (event, detail) => {
       this.navigate(detail.path);
     });
-
-    // TODO: uzyj zdarzenia 'popstate', aby wyrenderowac odpowiednia
-    // sciezke, gdy uzytkownik klika Wstecz (<-) lub Naprzod (->)
   }
 
   init() {
@@ -39,7 +35,7 @@ export class Router {
     if (this.has(path)) {
       const { component } = this.get(path);
       
-      component()// dostaje Promise zaw. html widoku
+      component()
         .then(html => {
           this.outlet.empty().append(html);
         })

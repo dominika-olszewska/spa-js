@@ -1,6 +1,6 @@
 .roomsPage {
   box-sizing: border-box;
-  height: 100%;
+  min-height: 100%;
   padding-top: 60px;
   background-image: url("../assets/img_relaxation.jpg");
   background-repeat: no-repeat;
@@ -9,21 +9,83 @@
   .room {
     margin: 40px;
     background-color: rgba(255, 255, 255, 0.5);
+    display: grid;
+    grid-template-areas: "name plus minus" "beds beds beds " "guests guests guests " "price price price ";
+    grid-template-columns: 1fr 40px 40px;
+    div {
+      padding: 2px 12px;
+    }
 
+    button {
+      outline: 0;
+      border: 0;
+      background-color: #e8e0cd;
+      font-size: 24px;
+      color: white;
+
+      &:hover {
+        cursor: auto;
+      }
+    }
+
+    button.active {
+      background-color: #4d7e62;
+
+      &:hover {
+        cursor: pointer;
+        background-color: darken(#4d7e62, 10%);
+      }
+    }
 
     .name {
       background-color: #e8e0cd;
       padding: 12px;
+      grid-area: name;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .beds {
+      grid-area: beds;
+    }
+
+    .guests {
+      grid-area: guests;
+    }
+
+    .price {
+      grid-area: price;
     }
   }
 
   form {
     margin: 40px;
+    display: grid;
+    grid-template-areas:  "startLabel endLabel""startInput endInput";
+    grid-gap: 8px;
+
+    .startDateInput {
+      grid-area: startInput;
+    }
+
+    .endDateInput {
+      grid-area: endInput;
+    }
+
+    span {
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+
     input {
-      margin-right: 20px;
+      border: none;
+      outline: none;
+      background-color: #e8e0cd;
+      padding: 8px 12px;
+
     }
   }
-
 
   ::-webkit-inner-spin-button {
     display: none;

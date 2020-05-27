@@ -81,7 +81,17 @@ export const createDatePicker = () => {
     onStartInputChange(isEndInputDisabled, startDateInput, endDateInput);
     onEndInputChange(endDateInput);
 
+    const startLabel = document.createElement('span');
+    startLabel.className = 'startLabel';
+    startLabel.innerHTML = 'Arrival day';
+
+    const endLabel = document.createElement('span');
+    endLabel.className = 'endLabel';
+    endLabel.innerHTML = 'Departure day';
+
+    form.append(startLabel);
     form.append(startDateInput);
+    form.append(endLabel);
     form.append(endDateInput);
     return form;
 };
