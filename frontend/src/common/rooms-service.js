@@ -1,6 +1,6 @@
 export const roomsService = {
     getRooms() {
-        return fetch('http://localhost:3000/rooms')
+        return fetch('https://dominika-olszewska.github.io/spa-js/frontend/database.json')
             .then(response => response.json());
     },
 

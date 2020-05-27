@@ -60,41 +60,44 @@ export const createInputEl = (className) => {
 
 export const rooms = () => {
     const fragment = $(new DocumentFragment());
-    return roomsService.getRooms().then(rooms => {
+    return new Promise((resolve, reject) => {
+        roomsService.getRooms().then(data => {
+            const rooms = data.rooms;
+            console.log(rooms);
 
-        console.log(rooms);
+            const roomsList = document.createElement('div');
+            roomsList.className = "roomsList";
 
-        const roomsList = document.createElement('div');
-        roomsList.className = "roomsList";
+            rooms.map(room => {
+                const roomContainer = document.createElement('div');
+                roomContainer.className = 'room';
+                roomContainer.id = room.id;
+                createDivEl("name", room.name, roomContainer);
 
-        rooms.map(room => {
-            const roomContainer = document.createElement('div');
-            roomContainer.className = 'room';
-            roomContainer.id = room.id;
-            createDivEl("name", room.name, roomContainer);
+                createButtonEl('Plus', room, roomContainer, true);
+                createButtonEl('Minus', room, roomContainer, false);
 
-            createButtonEl('Plus', room, roomContainer, true);
-            createButtonEl('Minus', room, roomContainer, false);
+                createDivEl("beds", room.beds, roomContainer, 'Beds');
+                createDivEl("guests", room.guests, roomContainer, 'Guests');
+                createDivEl("price", room.price, roomContainer, 'Price');
 
-            createDivEl("beds", room.beds, roomContainer, 'Beds');
-            createDivEl("guests", room.guests, roomContainer, 'Guests');
-            createDivEl("price", room.price, roomContainer, 'Price');
+                return roomsList.appendChild(roomContainer);
 
-            return roomsList.appendChild(roomContainer);
+            });
 
-        });
+            const roomsPage = document.createElement('div');
+            roomsPage.className = "roomsPage";
+            const datePicker = createDatePicker();
+            roomsPage.append(datePicker);
+            roomsPage.append(roomsList);
 
-        const roomsPage = document.createElement('div');
-        roomsPage.className = "roomsPage";
-        const datePicker = createDatePicker();
-        roomsPage.append(datePicker);
-        roomsPage.append(roomsList);
-
-        fragment
-            .append(roomsPage);
+            fragment
+                .append(roomsPage);
 
 
-        return Promise.resolve(fragment);
-    });
+            resolve(fragment);
+        })
+            .catch(err => reject(err))
+    })
 };
 

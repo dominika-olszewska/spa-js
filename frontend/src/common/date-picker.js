@@ -1,19 +1,40 @@
 import moment from "moment";
 import {sessionStorageService} from "./session-storage-service";
 
-export const createInputEl = (className) => {
+export const createInputEl = (className, isMaxSet) => {
     const input = document.createElement('input');
     input.type = 'date';
     input.className = className;
     const today = moment().format('YYYY-MM-DD');
     input.min = today;
+    const max = moment(today, 'YYYY-MM-DD').add(1, 'years').format('YYYY-MM-DD');
+    isMaxSet ? input.max = max : input;
     return input;
 };
 
 export const createStartInputEl = (className) => {
     const storageStartDay = sessionStorageService.getItem('startDate');
-    const input = createInputEl(className);
+    const input = createInputEl(className, false);
     storageStartDay ? input.value = storageStartDay : input.value;
+    return input;
+};
+
+
+export const createEndInputEl = (className, isDisabled) => {
+    const storageStartDay = sessionStorageService.getItem('startDate');
+    const storageEndDay = sessionStorageService.getItem('endDate');
+    const input = createInputEl(className, true);
+    input.disabled = isDisabled;
+
+    if (storageEndDay || storageEndDay === "") {
+        input.value = storageEndDay;
+        input.disabled = false;
+
+        clearEndInput(storageStartDay, storageEndDay, input);
+
+        input.min = moment(storageStartDay, 'YYYY-MM-DD').add(1, 'days').format('YYYY-MM-DD');
+        input.max = moment(storageStartDay, 'YYYY-MM-DD').add(1, 'years').format('YYYY-MM-DD');
+    }
     return input;
 };
 
@@ -25,33 +46,20 @@ export const clearEndInput = (startDate, endDate, input) => {
     }
 };
 
-export const createEndInputEl = (className, isDisabled) => {
-    const storageStartDay = sessionStorageService.getItem('startDate');
-    const storageEndDay = sessionStorageService.getItem('endDate');
-    const input = createInputEl(className);
-    input.disabled = isDisabled;
-    if (storageEndDay || storageEndDay === "") {
-        input.value = storageEndDay;
-        input.disabled = false;
-        const min = moment(storageStartDay, 'YYYY-MM-DD').add(1, 'days').format('YYYY-MM-DD');
-        clearEndInput(storageStartDay, storageEndDay, input);
-        input.min = min;
-    }
-    return input;
-};
-
 export const onStartInputChange = (isEndInputDisabled, startDateInput, endDateInput) => {
     startDateInput.addEventListener('change', (event) => {
         const startDate = event.target.value;
         const endDate = endDateInput.value;
+
         if (endDate) {
-             clearEndInput(startDate, endDate, endDateInput);
+            clearEndInput(startDate, endDate, endDateInput);
         }
 
         isEndInputDisabled = false;
         endDateInput.disabled = isEndInputDisabled;
-        const min = moment(startDate, 'YYYY-MM-DD').add(1, 'days').format('YYYY-MM-DD');
-        endDateInput.min = min;
+
+        endDateInput.min = moment(startDate, 'YYYY-MM-DD').add(1, 'days').format('YYYY-MM-DD');
+        endDateInput.max = moment(startDate, 'YYYY-MM-DD').add(1, 'years').format('YYYY-MM-DD');
 
         sessionStorageService.setItem('startDate', startDate);
     });
