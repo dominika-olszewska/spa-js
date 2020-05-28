@@ -34,49 +34,49 @@
     {
       "name": "Massage with a hot monitor",
       "area": "back",
-      "id": "1",
+      "id": "001",
       "time": 30,
       "price": 80
     },
     {
       "name": "Whipping with a mouse cable",
       "area": "back",
-      "id": "2",
+      "id": "002",
       "time": 20,
       "price": 70
     },
     {
       "name": "Peeling with CD fragments",
       "area": "face",
-      "id": "3",
+      "id": "003",
       "time": 15,
       "price": 50
     },
     {
       "name": "USB wax pedicure",
       "area": "legs",
-      "id": 4,
+      "id": "004",
       "time": 25,
       "price": 100
     },
     {
       "name": "Analog-digital manicure",
       "area": "hands",
-      "id": "5",
+      "id": "005",
       "time": 45,
       "price": 150
     },
     {
       "name": "Bath in hot coffee",
       "area": "body",
-      "id": "6",
+      "id": "006",
       "time": 60,
       "price": 200
     },
     {
       "name": "Epilation with a hard disk\n",
       "area": "body",
-      "id": "7",
+      "id": "007",
       "time": 45,
       "price": 120
     }
