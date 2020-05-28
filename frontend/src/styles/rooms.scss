@@ -6,12 +6,21 @@
   background-repeat: no-repeat;
   background-size: cover;
 
+  .roomsList {
+    padding-bottom: 40px;
+  }
+
   .room {
     margin: 40px;
     background-color: rgba(255, 255, 255, 0.5);
     display: grid;
     grid-template-areas: "name plus minus" "beds beds beds " "guests guests guests " "price price price ";
     grid-template-columns: 1fr 40px 40px;
+
+    &:last-child {
+      margin-bottom: 0px;
+    }
+
     div {
       padding: 2px 12px;
     }
@@ -61,7 +70,7 @@
   form {
     margin: 40px;
     display: grid;
-    grid-template-areas:  "startLabel endLabel""startInput endInput";
+    grid-template-areas: "startLabel endLabel""startInput endInput";
     grid-gap: 8px;
 
     .startDateInput {
@@ -85,6 +94,7 @@
       padding: 8px 12px;
 
     }
+
   }
 
   ::-webkit-inner-spin-button {

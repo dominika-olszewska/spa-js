@@ -1,25 +1,48 @@
 import $ from 'jquery';
 import '../styles/booking.scss';
 import {sessionStorageService} from '../common/session-storage-service';
-import {createDivEl} from "./rooms";
+import {createDivEl, deleteFromSessionStorage,} from "./rooms";
 
-const getRoomsFromStorage = () => {
+const countPrice = () => {
 
-    const storageRooms = sessionStorageService.getItem('rooms');
+}
 
-    const bookedRoomsList = document.createElement('div');
-    bookedRoomsList.className = "bookedRoomsList";
+const getElementsFromStorage = (storageKey, containerClass, elementClass) => {
+
+    const storageRooms = sessionStorageService.getItem(storageKey);
+    console.log(storageRooms);
+
+    const bookedElementsList = document.createElement('div');
+    bookedElementsList.className = containerClass;
     storageRooms
         ? storageRooms.map(storageRoom => {
             const storageElement = document.createElement('div');
             storageElement.className = 'storageElement';
             storageRoom.id = storageElement.id;
-            createDivEl("room", storageRoom.name, storageElement);
-            return bookedRoomsList.appendChild(storageElement);
+            createDivEl(elementClass, storageRoom.name, storageElement);
+            createRemovalElement(storageElement, storageRoom, storageKey);
+            return bookedElementsList.appendChild(storageElement);
         })
         : null;
-    return bookedRoomsList;
+
+
+    return bookedElementsList;
 };
+
+const createRemovalElement = (container, storageElement, keyInStorage) => {
+    const removalEl = document.createElement('span');
+    removalEl.className = 'removalEl';
+    removalEl.innerHTML = ' x';
+
+    removalEl.addEventListener('click', () => {
+        console.log('delete', keyInStorage, storageElement);
+        deleteFromSessionStorage(storageElement, keyInStorage);
+
+    });
+    return container.append(removalEl);
+
+};
+
 
 const getDateFromStorage = (key) => {
 
@@ -32,7 +55,6 @@ const getDateFromStorage = (key) => {
         return dateOfStay;
     }
 
-
 };
 
 export const booking = () => {
@@ -40,17 +62,25 @@ export const booking = () => {
 
     const datesOfStay = document.createElement('div');
     datesOfStay.className = "datesOfStay";
+
     const startDate = getDateFromStorage('startDate');
     const endDate = getDateFromStorage('endDate');
-    console.log(startDate);
 
-    const bookedRoomsList = getRoomsFromStorage();
+    const bookedRoomsList = getElementsFromStorage('rooms', 'bookedRoomsList', 'room' );
+    const bookedTreatmentsList = getElementsFromStorage('treatments', 'bookedTreatmentsList', 'treatment' );
+
+    const bookingWrapper = document.createElement('div');
+    bookingWrapper.className = "bookingWrapper";
 
     const bookingsPage = document.createElement('div');
     bookingsPage.className = "bookingsPage";
-    startDate ? bookingsPage.appendChild(startDate) : null;
-    endDate ? bookingsPage.appendChild(endDate) : null;
-    bookingsPage.appendChild(bookedRoomsList);
+
+    startDate ? bookingWrapper.appendChild(startDate) : null;
+    endDate ? bookingWrapper.appendChild(endDate) : null;
+    bookingWrapper.appendChild(bookedRoomsList);
+    bookingWrapper.appendChild(bookedTreatmentsList);
+
+    bookingsPage.appendChild(bookingWrapper);
     fragment
         .append(bookingsPage);
 

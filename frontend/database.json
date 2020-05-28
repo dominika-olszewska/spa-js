@@ -32,49 +32,49 @@
   ],
   "treatments": [
     {
-      "id": 1,
+      "treatment_id": 1,
       "name": "Massage with a hot monitor",
       "area": "back",
       "time": 30,
       "price": 80
     },
     {
-      "id": 2,
+      "treatment_id": 2,
       "name": "Whipping with a mouse cable",
       "area": "back",
       "time": 20,
       "price": 70
     },
     {
-      "id": 3,
+      "treatment_id": 3,
       "name": "Peeling with CD fragments",
       "area": "face",
       "time": 15,
       "price": 50
     },
     {
-      "id": 4,
-      "name": "Pedicure woskiem z USB",
+      "treatment_id": 4,
+      "name": "USB wax pedicure",
       "area": "legs",
       "time": 25,
       "price": 100
     },
     {
-      "id": 5,
+      "treatment_id": 5,
       "name": "Analog-digital manicure",
       "area": "hands",
       "time": 45,
       "price": 150
     },
     {
-      "id": 6,
+      "treatment_id": 6,
       "name": "Bath in hot coffee",
       "area": "body",
       "time": 60,
       "price": 200
     },
     {
-      "id": 7,
+      "treatment_id": 7,
       "name": "Epilation with a hard disk\n",
       "area": "body",
       "time": 45,
