@@ -12,43 +12,42 @@ export const createDivEl = (className, element, container, name = '') => {
     container.append(el);
 };
 
-export const createButtonEl = (name, element, container, addToStorage, id, className) => {
+export const createButtonEl = (name, element, container, addToStorage, keyInStorage, id, className) => {
     const button = document.createElement('button');
     button.innerHTML = name;
     button.id = id;
     button.className = className;
     addToStorage
         ? button.addEventListener('click', () => {
-            addToSessionStorage(element);
+            addToSessionStorage(element, keyInStorage);
         })
         : button.addEventListener('click', () => {
-            console.log('room to delete', element.name, element.id);
-            deleteFromSessionStorage(element);
+            deleteFromSessionStorage(element, keyInStorage);
         });
     container?.appendChild(button);
 };
 
-export const getRoomsFromStorage = () => {
-    let rooms = sessionStorage.getItem('rooms') || [];
-    if (rooms && (typeof rooms) !== "object") {
-        rooms = JSON.parse(rooms)
+export const getElementsFromStorage = (keyInStorage) => {
+    let elements = sessionStorage.getItem(keyInStorage) || [];
+    if (elements && (typeof elements) !== "object") {
+        elements = JSON.parse(elements)
     }
-    return rooms;
+    return elements;
 };
 
-export const addToSessionStorage = (room) => {
-    let rooms = getRoomsFromStorage();
-    const valuesInStorage = rooms?.filter(ROOM => room.id === ROOM.id);
-    valuesInStorage?.length === 0 ? rooms.push(room) : null;
-    sessionStorageService.setItem('rooms', rooms);
+export const addToSessionStorage = (element, keyInStorage) => {
+    let elements = getElementsFromStorage(keyInStorage);
+    const valuesInStorage = elements?.filter(EL => element.id === EL.id);
+    valuesInStorage?.length === 0 ? elements.push(element) : null;
+    sessionStorageService.setItem(keyInStorage, elements);
 };
 
-export const deleteFromSessionStorage = (room) => {
-    let rooms = getRoomsFromStorage();
-    const newRooms = rooms.filter(ROOM => {
-        return ROOM.id !== room.id
+export const deleteFromSessionStorage = (element, keyInStorage) => {
+    let elements = getElementsFromStorage(keyInStorage);
+    const newElements = elements.filter(EL => {
+        return EL.id !== element.id
     });
-    sessionStorageService.setItem('rooms', newRooms);
+    sessionStorageService.setItem(keyInStorage, newElements);
 };
 
 export const createInputEl = (className) => {
@@ -65,7 +64,6 @@ export const rooms = () => {
     return new Promise((resolve, reject) => {
         roomsService.getRooms().then(data => {
             const rooms = data.rooms;
-            console.log(rooms);
 
             const roomsList = document.createElement('div');
             roomsList.className = "roomsList";
@@ -76,8 +74,8 @@ export const rooms = () => {
                 roomContainer.id = room.id;
                 createDivEl("name", room.name, roomContainer);
 
-                createButtonEl('+', room, roomContainer, true, 'button-plus', 'active');
-                createButtonEl('-', room, roomContainer, false, 'button-minus', '');
+                createButtonEl('+', room, roomContainer, true, 'rooms', 'button-plus', 'active');
+                createButtonEl('-', room, roomContainer, false, 'rooms', 'button-minus', '');
 
                 createDivEl("beds", room.beds, roomContainer, 'Beds');
                 createDivEl("guests", room.guests, roomContainer, 'Guests');

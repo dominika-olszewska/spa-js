@@ -1,8 +1,73 @@
 .treatmentsPage {
   box-sizing: border-box;
-  height: 100vh;
+  min-height: 100%;
   padding-top: 60px;
-  background-image: url("../assets/candles.jpg");
+  background-image: url("../assets/slide02.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+
+  .treatmentsList {
+    padding-bottom: 40px;
+  }
+
+  .treatment {
+    margin: 40px;
+    background-color: rgba(255, 255, 255, 0.5);
+    display: grid;
+    grid-template-areas: "name plus minus" "area area area " "time time time " "price price price ";
+    grid-template-columns: 1fr 40px 40px;
+
+    &:last-child {
+      margin-bottom: 0px;
+    }
+
+    div {
+      padding: 2px 12px;
+    }
+
+    button {
+      outline: 0;
+      border: 0;
+      background-color: #e8e0cd;
+      font-size: 24px;
+      color: white;
+
+      &:hover {
+        cursor: auto;
+      }
+    }
+
+    button.active {
+      background-color: #4d7e62;
+
+      &:hover {
+        cursor: pointer;
+        background-color: darken(#4d7e62, 10%);
+      }
+    }
+
+    .name {
+      background-color: #e8e0cd;
+      padding: 12px;
+      grid-area: name;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .area {
+      grid-area: area;
+    }
+
+    .time {
+      grid-area: time;
+    }
+
+    .price {
+      grid-area: price;
+    }
+
+  }
+
+
+
 }

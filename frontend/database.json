@@ -33,21 +33,21 @@
   "treatments": [
     {
       "id": 1,
-      "name": "Masaż rozgrzanym monitorem",
+      "name": "Massage with a hot monitor",
       "area": "back",
       "time": 30,
       "price": 80
     },
     {
       "id": 2,
-      "name": "Biczowanie kablem od myszy",
+      "name": "Whipping with a mouse cable",
       "area": "back",
       "time": 20,
       "price": 70
     },
     {
       "id": 3,
-      "name": "Peeling odłamkami płyty CD",
+      "name": "Peeling with CD fragments",
       "area": "face",
       "time": 15,
       "price": 50
@@ -61,21 +61,21 @@
     },
     {
       "id": 5,
-      "name": "Manicure analogowo-cyfrowy",
+      "name": "Analog-digital manicure",
       "area": "hands",
       "time": 45,
       "price": 150
     },
     {
       "id": 6,
-      "name": "Kąpiel w gorącej kawie",
+      "name": "Bath in hot coffee",
       "area": "body",
       "time": 60,
       "price": 200
     },
     {
       "id": 7,
-      "name": "Depilacja dyskiem twardym",
+      "name": "Epilation with a hard disk\n",
       "area": "body",
       "time": 45,
       "price": 120
