@@ -14,9 +14,9 @@ export class Router {
   mount(outlet) {
     this.outlet = outlet;
 
-    this.body.on(routeChange, (event, detail) => {
-      this.navigate(detail.path);
-    });
+    // this.body.on(routeChange, (event, detail) => {
+    //   this.navigate(detail.path);
+    // });
   }
 
   init() {
