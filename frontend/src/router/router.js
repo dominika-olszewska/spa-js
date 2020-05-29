@@ -52,6 +52,4 @@ export class Router {
 
     // history.pushState(data, '', path);
   }
-   
-
 }
