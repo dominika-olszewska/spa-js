@@ -50,7 +50,7 @@ export class Router {
       this.outlet.empty().append(html);
     }
 
-    history.pushState(data, '', path);
+    // history.pushState(data, '', path);
   }
    
 
