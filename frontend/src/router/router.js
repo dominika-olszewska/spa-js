@@ -14,16 +14,16 @@ export class Router {
   mount(outlet) {
     this.outlet = outlet;
 
-    // this.body.on(routeChange, (event, detail) => {
-    //   this.navigate(detail.path);
-    // });
+    this.body.on(routeChange, (event, detail) => {
+      this.navigate(detail.path);
+    });
   }
 
   init() {
-    const path = localStorage.getItem('path') || '/';
-    this.navigate(path);
+    // const path = localStorage.getItem('path') || '/';
+    // this.navigate(path);
 
-    // this.navigate(location.pathname);
+    this.navigate(location.pathname);
   }
 
   get(path) {
@@ -44,12 +44,12 @@ export class Router {
         })
       
     } else {
-      localStorage.setItem('path', '/');
+      // localStorage.setItem('path', '/');
 
       const html = oops();
       this.outlet.empty().append(html);
     }
 
-    // history.pushState(data, '', path);
+    history.pushState(data, '', path);
   }
 }

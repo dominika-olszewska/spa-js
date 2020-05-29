@@ -17376,15 +17376,19 @@ function () {
   _createClass(Router, [{
     key: "mount",
     value: function mount(outlet) {
-      this.outlet = outlet; // this.body.on(routeChange, (event, detail) => {
-      //   this.navigate(detail.path);
-      // });
+      var _this = this;
+
+      this.outlet = outlet;
+      this.body.on(_routeChange.routeChange, function (event, detail) {
+        _this.navigate(detail.path);
+      });
     }
   }, {
     key: "init",
     value: function init() {
-      var path = localStorage.getItem('path') || '/';
-      this.navigate(path); // this.navigate(location.pathname);
+      // const path = localStorage.getItem('path') || '/';
+      // this.navigate(path);
+      this.navigate(location.pathname);
     }
   }, {
     key: "get",
@@ -17401,7 +17405,7 @@ function () {
   }, {
     key: "navigate",
     value: function navigate(path) {
-      var _this = this;
+      var _this2 = this;
 
       var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
@@ -17410,14 +17414,15 @@ function () {
             component = _this$get.component;
 
         component().then(function (html) {
-          _this.outlet.empty().append(html);
+          _this2.outlet.empty().append(html);
         });
       } else {
-        localStorage.setItem('path', '/');
+        // localStorage.setItem('path', '/');
         var html = (0, _views.oops)();
         this.outlet.empty().append(html);
-      } // history.pushState(data, '', path);
+      }
 
+      history.pushState(data, '', path);
     }
   }]);
 
