@@ -9,7 +9,6 @@ export const treatments = () => {
     return new Promise((resolve, reject) => {
         treatmentsService.getTreatments().then(data => {
             const treatments = data.treatments;
-            console.log(treatments);
 
             const treatmentsList = document.createElement('div');
             treatmentsList.className = "treatmentsList";

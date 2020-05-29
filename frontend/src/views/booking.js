@@ -3,29 +3,37 @@ import '../styles/booking.scss';
 import {sessionStorageService} from '../common/session-storage-service';
 import {createDivEl, deleteFromSessionStorage,} from "./rooms";
 
-const countPrice = () => {
+const countPrice = (key) => {
+    const elements = sessionStorageService.getItem(key);
+    if (elements && elements.length > 0) {
+        const prices = elements.map(el => el.price);
+        return prices.reduce((a, b) => a + b, 0)
+    } else {
+        return 0;
+    }
+};
 
-}
-
-const getElementsFromStorage = (storageKey, containerClass, elementClass) => {
+const getElementsFromStorage = (storageKey, containerClass, elementClass, headerText) => {
 
     const storageRooms = sessionStorageService.getItem(storageKey);
-    console.log(storageRooms);
 
     const bookedElementsList = document.createElement('div');
     bookedElementsList.className = containerClass;
-    storageRooms
-        ? storageRooms.map(storageRoom => {
+    if (storageRooms && storageRooms.length > 0) {
+
+        const header = document.createElement('div');
+        header.className = 'header';
+        header.innerHTML = headerText;
+        bookedElementsList.append(header);
+        storageRooms.map(storageRoom => {
             const storageElement = document.createElement('div');
             storageElement.className = 'storageElement';
             storageRoom.id = storageElement.id;
             createDivEl(elementClass, storageRoom.name, storageElement);
             createRemovalElement(storageElement, storageRoom, storageKey);
             return bookedElementsList.appendChild(storageElement);
-        })
-        : null;
-
-
+        });
+    }
     return bookedElementsList;
 };
 
@@ -35,8 +43,8 @@ const createRemovalElement = (container, storageElement, keyInStorage) => {
     removalEl.innerHTML = ' x';
 
     removalEl.addEventListener('click', () => {
-        console.log('delete', keyInStorage, storageElement);
         deleteFromSessionStorage(storageElement, keyInStorage);
+        location.reload();
 
     });
     return container.append(removalEl);
@@ -44,14 +52,14 @@ const createRemovalElement = (container, storageElement, keyInStorage) => {
 };
 
 
-const getDateFromStorage = (key) => {
+const getDateFromStorage = (key, name) => {
 
     const storageDay = sessionStorageService.getItem(key);
 
     if (storageDay) {
         const dateOfStay = document.createElement('div');
         dateOfStay.className = key;
-        dateOfStay.innerHTML = storageDay;
+        dateOfStay.innerHTML = name + storageDay;
         return dateOfStay;
     }
 
@@ -63,11 +71,11 @@ export const booking = () => {
     const datesOfStay = document.createElement('div');
     datesOfStay.className = "datesOfStay";
 
-    const startDate = getDateFromStorage('startDate');
-    const endDate = getDateFromStorage('endDate');
+    const startDate = getDateFromStorage('startDate', 'Date of your arrival: ');
+    const endDate = getDateFromStorage('endDate', 'Date of your departure: ');
 
-    const bookedRoomsList = getElementsFromStorage('rooms', 'bookedRoomsList', 'room' );
-    const bookedTreatmentsList = getElementsFromStorage('treatments', 'bookedTreatmentsList', 'treatment' );
+    const bookedRoomsList = getElementsFromStorage('rooms', 'bookedRoomsList', 'room', 'You can stay in:');
+    const bookedTreatmentsList = getElementsFromStorage('treatments', 'bookedTreatmentsList', 'treatment', 'Your treatments:');
 
     const bookingWrapper = document.createElement('div');
     bookingWrapper.className = "bookingWrapper";
@@ -75,10 +83,22 @@ export const booking = () => {
     const bookingsPage = document.createElement('div');
     bookingsPage.className = "bookingsPage";
 
+    const bookingsHeader = document.createElement('div');
+    bookingsHeader.className = "bookingsHeader";
+    bookingsHeader.innerHTML = 'Your reservation';
+    bookingWrapper.append(bookingsHeader);
+
     startDate ? bookingWrapper.appendChild(startDate) : null;
     endDate ? bookingWrapper.appendChild(endDate) : null;
     bookingWrapper.appendChild(bookedRoomsList);
     bookingWrapper.appendChild(bookedTreatmentsList);
+
+    const totalPrice = countPrice('rooms') + countPrice('treatments');
+    const totalPriceDiv = document.createElement('div');
+    totalPriceDiv.className = "totalPriceDiv";
+    totalPriceDiv.innerHTML = 'Total cost: ' + totalPrice;
+    bookingWrapper.append(totalPriceDiv);
+
 
     bookingsPage.appendChild(bookingWrapper);
     fragment

@@ -45,7 +45,11 @@ export const addToSessionStorage = (element, keyInStorage) => {
 export const deleteFromSessionStorage = (element, keyInStorage) => {
     let elements = getElementsFromStorage(keyInStorage);
     const newElements = elements.filter(EL => {
-        return EL.id !== element.id
+        if (element.id && element.id !== "") {
+            return EL.id !== element.id;
+        } else {
+            return EL.name !== element.name;
+        }
     });
     sessionStorageService.setItem(keyInStorage, newElements);
 };

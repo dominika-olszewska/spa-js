@@ -20,7 +20,10 @@ export class Router {
   }
 
   init() {
-    this.navigate(location.pathname);
+    const path = localStorage.getItem('path') || '/';
+    this.navigate(path);
+
+    // this.navigate(location.pathname);
   }
 
   get(path) {
@@ -41,6 +44,8 @@ export class Router {
         })
       
     } else {
+      localStorage.setItem('path', '/');
+
       const html = oops();
       this.outlet.empty().append(html);
     }

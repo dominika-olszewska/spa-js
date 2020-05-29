@@ -11,10 +11,48 @@
   align-items: center;
 
   .bookingWrapper {
-    max-width: 400px;
+    max-width: 800px;
+    min-width: 500px;
     background-color: white;
     opacity: 0.8;
     padding: 20px;
+
+    div {
+      display: flex;
+    }
+
+    .bookedRoomsList, .bookedTreatmentsList {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 12px;
+    }
+    .header {
+      font-weight: bold;;
+    }
+    .endDate {
+      margin-bottom: 12px;
+    }
+
+    .totalPriceDiv {
+      font-weight: bold;
+    }
+
+    .bookingsHeader{
+      text-transform: uppercase;
+      border-bottom: 2px #3b3b3b solid;
+      font-weight: bold;
+      margin-bottom: 16px;
+    }
+
+    .removalEl {
+      margin-left: 12px;
+      font-weight: bold;
+
+      &:hover {
+        cursor: pointer;
+        color: darken(#3b3b3b, 10%);
+      }
+    }
 
   }
 }
