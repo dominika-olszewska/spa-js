@@ -1,5 +1,6 @@
 # IT SPA
-# LIVE : https://dominika-olszewska.github.io/spa-js/
+
+LIVE : https://dominika-olszewska.github.io/spa-js/
 
 The project involves writing a Single Page Application for a SPA center dedicated to programmers.
 
