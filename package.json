@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start:db": "json-server --watch frontend/database.json",
-    "start:app": "parcel ./frontend/index.html --out-dir docs",
+    "start:app": "parcel ./frontend/index.html --open",
     "build": "parcel build ./frontend/index.html --out-dir docs --public-url ./",
     "deploy": "git add . && git commit -m \"deploy commit\" && git push origin master"
   },
