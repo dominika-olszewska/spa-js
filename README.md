@@ -1,46 +1,11 @@
 # IT SPA
+# LIVE : https://dominika-olszewska.github.io/spa-js/
 
-Projekt polega na napisaniu aplikacji Single Page Application dla ośrodka SPA dedykowanego programistom.
+The project involves writing a Single Page Application for a SPA center dedicated to programmers.
 
-Aplikacja powinna umożliwiać: 
+The application allows:
 
-- Przeglądanie dostępnych zabiegów
-- Dodawanie wybranych zabiegów do koszyka
-- Wybór daty przyjazdu i wyjazdu oraz pokoju  
-- Rejestrację użytkownika (opcjonalnie)
-- Logowanie użytkownika (opcjonalnie)
-- Podsumowanie składanego zamówienia
-
-## Booking
-
-Stwórz komponent koszyka, który wyświetla podsumowanie zamówienia.
-Koszyk powinien też umożliwiać nanoszenie poprawek do zamówienia.
-Użytkownik nie może wybrać daty przyjazdu wcześniejszej niż bieżąca.
-Wybrana data wyjazdu nie może być dalsza niż rok od daty przyjazdu.
-
-## Rejestracja
-
-Stwórz komponent rejestracji użytkownika z opcjonalnym miernikiem siły hasła.
-Rejestracja polega na zapisaniu danych użytkownika (e-mail i hasła) w pliku `database.json`.
-Nie powinna być możliwa rejestracja użytkownika o identycznym adresie e-mail.
-
-## Logowanie
-
-Stwórz komponent logowania użytkownika, który opcjonalnie będzie wyświetlał avatar użytkownika.
-Logowanie polega na porównaniu podanych przez użytkownika danych (e-mail i hasła) z tymi w pliku `database.json`.
-
-## Pokoje
-
-Bazę przykładowych pokoi w ośrodku IT SPA znajdziesz w pliku `database.json`.
-Możesz dowolnie zmienić istniejące pokoje lub dodać swoje własne. 
-
-## Zabiegi 
-
-Bazę przykładowych zabiegów ośrodka IT SPA znajdziesz w pliku `database.json`.
-Możesz dowolnie zmienić istniejące zabiegi lub dodać swoje własne. 
-
-## Koszyk
-
-Stwórz komponent koszyka, który po najechaniu myszką będzie wyświetlał dodane pokoje i zabiegi.
-Koszyk musi przetrwać przeładowanie strony, dlatego spróbuj wykorzystać ciasteczka (Cookies).
-
+- Viewing available treatments
+- Adding selected treatments to the basket
+- Choice of arrival and departure date and room
+- Summary of order placed
