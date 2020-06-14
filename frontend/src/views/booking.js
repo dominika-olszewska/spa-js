@@ -68,15 +68,19 @@ export const createOrderButtonEl = (name, container, id, className) => {
 
     const button = createButton(name, id, className);
 
-    const elementsFromStorage = [];
+    let elementsFromStorage = [];
     const keys = ['rooms', 'treatments', 'startDate', 'endDate'];
 
     keys.forEach(key => {
         const element = sessionStorageService.getItem(key);
-        if (element) {
-           return elementsFromStorage.push(element);
+        if (element && element !== []) {
+            return elementsFromStorage.push(element);
         }
     });
+    elementsFromStorage = elementsFromStorage.filter(element => {
+        return element.length > 0;
+    });
+
     button.disabled = elementsFromStorage.length < 4;
 
     button.addEventListener('click', () => {

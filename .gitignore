@@ -109,3 +109,7 @@ typings/
 .idea/
 .idea/workspace.xml
 dist/
+
+.firebase
+.firebaserc
+firebase.json
