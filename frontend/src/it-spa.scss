@@ -22,3 +22,12 @@ h1,h2,h3,h4,h5,ol {
 main {
   height: 100vh;
 }
+
+a {
+  text-decoration: none;
+  color: white;
+
+  &:visited {
+    color: white;
+  }
+}

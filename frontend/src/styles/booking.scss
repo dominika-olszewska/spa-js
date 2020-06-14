@@ -54,5 +54,31 @@
       }
     }
 
+    .btnBookReservation {
+      outline: 0;
+      border: 0;
+      background-color: #a1a12e;
+      font-size: 20px;
+      padding: 8px;
+      color: white;
+      text-transform: uppercase;
+      margin-top: 20px;
+
+      &:hover {
+        background-color: darken(#a1a12e, 10%);
+        cursor: pointer;
+      }
+    }
+
+    button:disabled,
+    button[disabled] {
+      background-color: lightgray;
+
+      &:hover {
+        cursor: auto;
+        background-color: lightgray;
+      }
+    }
+
   }
 }

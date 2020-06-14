@@ -18,13 +18,16 @@ export const getElementsFromStorage = (keyInStorage) => {
     }
     return elements;
 };
-
-
-export const createButtonEl = (name, element, container, addToStorage, keyInStorage, id, className) => {
+export const createButton = (name, id, className) => {
     const button = document.createElement('button');
     button.innerHTML = name;
     button.id = id;
     button.className = className;
+    return button;
+};
+
+export const createButtonEl = (name, element, container, addToStorage, keyInStorage, id, className) => {
+    const button = createButton(name, id, className);
 
     const elementsFromStorage = getElementsFromStorage(keyInStorage);
     button.disabled = elementsFromStorage.filter(elementFromStorage => element.name === elementFromStorage.name).length > 0;
