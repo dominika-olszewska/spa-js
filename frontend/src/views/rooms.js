@@ -11,22 +11,6 @@ export const createDivEl = (className, element, container, name = '') => {
     name ? el.innerHTML = name + ': ' + element : el.innerHTML = element;
     container.append(el);
 };
-
-export const createButtonEl = (name, element, container, addToStorage, keyInStorage, id, className) => {
-    const button = document.createElement('button');
-    button.innerHTML = name;
-    button.id = id;
-    button.className = className;
-    addToStorage
-        ? button.addEventListener('click', () => {
-            addToSessionStorage(element, keyInStorage);
-        })
-        : button.addEventListener('click', () => {
-            deleteFromSessionStorage(element, keyInStorage);
-        });
-    container?.appendChild(button);
-};
-
 export const getElementsFromStorage = (keyInStorage) => {
     let elements = sessionStorage.getItem(keyInStorage) || [];
     if (elements && (typeof elements) !== "object") {
@@ -34,6 +18,29 @@ export const getElementsFromStorage = (keyInStorage) => {
     }
     return elements;
 };
+
+
+export const createButtonEl = (name, element, container, addToStorage, keyInStorage, id, className) => {
+    const button = document.createElement('button');
+    button.innerHTML = name;
+    button.id = id;
+    button.className = className;
+
+    const elementsFromStorage = getElementsFromStorage(keyInStorage);
+    button.disabled = elementsFromStorage.filter(elementFromStorage => element.name === elementFromStorage.name).length > 0;
+
+    addToStorage
+        ? button.addEventListener('click', () => {
+            addToSessionStorage(element, keyInStorage);
+            window.alert(`${element.name} has been added to your basket`);
+            window.location.reload();
+        })
+        : button.addEventListener('click', () => {
+            deleteFromSessionStorage(element, keyInStorage);
+        });
+    container?.appendChild(button);
+};
+
 
 export const addToSessionStorage = (element, keyInStorage) => {
     let elements = getElementsFromStorage(keyInStorage);
@@ -79,7 +86,6 @@ export const rooms = () => {
                 createDivEl("name", room.name, roomContainer);
 
                 createButtonEl('+', room, roomContainer, true, 'rooms', 'button-plus', 'active');
-                createButtonEl('-', room, roomContainer, false, 'rooms', 'button-minus', '');
 
                 createDivEl("beds", room.beds, roomContainer, 'Beds');
                 createDivEl("guests", room.guests, roomContainer, 'Guests');
