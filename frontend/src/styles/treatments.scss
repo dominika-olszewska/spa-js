@@ -14,8 +14,8 @@
     margin: 40px;
     background-color: rgba(255, 255, 255, 0.5);
     display: grid;
-    grid-template-areas: "name plus minus" "area area area " "time time time " "price price price ";
-    grid-template-columns: 1fr 40px 40px;
+    grid-template-areas: "name plus " "area area" "time time" "price price";
+    grid-template-columns: 1fr 40px;
 
     &:last-child {
       margin-bottom: 0px;
@@ -47,6 +47,17 @@
       }
     }
 
+    button:disabled,
+    button[disabled]{
+      background-color: #e8e0cd;
+      color: #e8e0cd;
+
+      &:hover {
+        cursor: auto;
+        background-color: #e8e0cd;
+      }
+    }
+
     .name {
       background-color: #e8e0cd;
       padding: 12px;
@@ -68,7 +79,5 @@
     }
 
   }
-
-
 
 }

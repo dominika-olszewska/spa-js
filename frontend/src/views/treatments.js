@@ -19,8 +19,6 @@ export const treatments = () => {
                 treatmentContainer.id = treatment.id;
 
                 createButtonEl('+', treatment, treatmentContainer, true,'treatments', 'button-plus', 'active');
-                createButtonEl('-', treatment, treatmentContainer, false, 'treatments', 'button-minus', '');
-
 
                 createDivEl("name", treatment.name, treatmentContainer);
                 createDivEl("area", treatment.area, treatmentContainer, 'Area');

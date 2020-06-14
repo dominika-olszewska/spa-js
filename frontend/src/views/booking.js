@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import '../styles/booking.scss';
 import {sessionStorageService} from '../common/session-storage-service';
-import {createDivEl, deleteFromSessionStorage,} from "./rooms";
+import {createButton, createButtonEl, createDivEl, deleteFromSessionStorage,} from "./rooms";
 
 const countPrice = (key) => {
     const elements = sessionStorageService.getItem(key);
@@ -62,8 +62,37 @@ const getDateFromStorage = (key, name) => {
         dateOfStay.innerHTML = name + storageDay;
         return dateOfStay;
     }
-
 };
+
+export const createOrderButtonEl = (name, container, id, className) => {
+
+    const button = createButton(name, id, className);
+
+    const elementsFromStorage = [];
+    const keys = ['rooms', 'treatments', 'startDate', 'endDate'];
+
+    keys.forEach(key => {
+        const element = sessionStorageService.getItem(key);
+        if (element) {
+            console.log('element', element);
+            return elementsFromStorage.push(element);
+        }
+    });
+    button.disabled = elementsFromStorage.length < 4;
+
+    console.log('els from storage', elementsFromStorage);
+
+    button.addEventListener('click', () => {
+        keys.forEach(key => {
+            sessionStorage.removeItem(key);
+        });
+        window.alert('Your booking was successful');
+        window.location.reload();
+    });
+
+    container?.appendChild(button);
+};
+
 
 export const booking = () => {
     const fragment = $(new DocumentFragment());
@@ -99,6 +128,7 @@ export const booking = () => {
     totalPriceDiv.innerHTML = 'Total cost: ' + totalPrice;
     bookingWrapper.append(totalPriceDiv);
 
+    createOrderButtonEl('Book', bookingWrapper, 'order-button', 'btnBookReservation');
 
     bookingsPage.appendChild(bookingWrapper);
     fragment
