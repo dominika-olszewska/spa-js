@@ -23,7 +23,7 @@
     "font-awesome": "^4.7.0",
     "frontend": "^2.0.0-alpha.4",
     "jquery": "^3.4.1",
-    "moment": "^2.26.0",
+    "moment": "^2.29.2",
     "nodemon": "^2.0.2",
     "now": "^19.0.1"
   }
